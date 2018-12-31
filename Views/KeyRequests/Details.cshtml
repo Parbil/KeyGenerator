@@ -1,0 +1,36 @@
+﻿@model BitproKeyGen.Models.KeyRequest
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KeyRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductKey)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductKey)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseKey)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LicenseKey)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

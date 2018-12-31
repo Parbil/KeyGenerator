@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using BitproKeyGen.Models;
 
 namespace BitproKeyGen.Data
 {
@@ -12,5 +13,6 @@ namespace BitproKeyGen.Data
             : base(options)
         {
         }
+        public DbSet<BitproKeyGen.Models.KeyRequest> KeyRequest { get; set; }
     }
 }
