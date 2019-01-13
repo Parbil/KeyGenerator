@@ -3,34 +3,88 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h2>Details</h2>
-
+<div class="col-md-offset-1">
+    <h3>Details</h3>
+    </div>
 <div>
-    <h4>KeyRequest</h4>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductKey)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductKey)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LicenseKey)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LicenseKey)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="col-md-offset-4">
+        <dl class="dl-horizontal">
+            <dt>
+                Shop Name
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ShopName)
+            </dd>
+            <dt>
+                Contact No
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ShopContactNo)
+            </dd>
+            <dt>
+                Product Key
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductKey)
+            </dd>
+            <dt>
+                License Key
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LicenseKey)
+            </dd>
+            <dt>
+                Duration
+            </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.Duration)*@
+                @if (Model.Duration==730)
+                {
+                    @("2 Year");
+                }
+                else if (Model.Duration == 365)
+                {
+                    @("1 Year");
+                }
+                else if (Model.Duration == 183)
+                {
+                    @("6 Month");
+                }
+                else
+                {
+                    @("Trial");
+                }
+            </dd>
+            <dt>
+                Requested Date
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RequestedDate)
+            </dd>
+            <dt>
+                Approved Date
+            </dt>
+            <dd>
+                @if (Model.ApprovedDate < new DateTime(2018, 1, 1))
+                {
+                    @("");
+                }
+                else
+                {
+                @Html.DisplayFor(model => model.ApprovedDate)
+                }
+            </dd>
+            <dt>
+                Status
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+        </dl>
+    </div>
+    </div>
+    @*<div class="col-lg-offset-2">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        </div>*@

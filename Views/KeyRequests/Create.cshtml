@@ -4,39 +4,74 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
 
-<h4>KeyRequest</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductKey" class="control-label"></label>
-                <input asp-for="ProductKey" class="form-control" />
-                <span asp-validation-for="ProductKey" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LicenseKey" class="control-label"></label>
-                <input asp-for="LicenseKey" class="form-control" />
-                <span asp-validation-for="LicenseKey" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <h3>New Request</h3>
+    
+    <hr />
+    
+    <div class="row">
+        <div class="col-md-4 ">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ShopName" class="control-label">Shop Name</label>
+                    <input asp-for="ShopName" class="form-control" required />
+                    <span asp-validation-for="ShopName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShopContactNo" class="control-label">Contact No</label>
+                    <input asp-for="ShopContactNo" class="form-control" required />
+                    <span asp-validation-for="ShopContactNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductKey" class="control-label">Product Key</label>
+                    <input asp-for="ProductKey" class="form-control" required />
+                    <span asp-validation-for="ProductKey" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duration" class="control-label">Duration</label>
+                    @*<input asp-for="Duration" class="form-control" required />*@
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "2 YEAR",
+                            Value = "730"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "1 YEAR",
+                            Value = "365",
+
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "6 MONTH",
+                            Value = "183"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "TRIAL",
+                            Value = "30"
+                        });
+                    }
+
+                    @Html.DropDownList("Duration", listItems, new { @class = "form-control" })
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+              
+        
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-warning" />
+        </div>
         </form>
+     </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div>
+            <a asp-action="Index">Back</a>
+        </div>
+   
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

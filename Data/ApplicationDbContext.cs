@@ -8,6 +8,7 @@ using BitproKeyGen.Models;
 namespace BitproKeyGen.Data
 {
     public class ApplicationDbContext : IdentityDbContext
+        <ApplicationUser, ApplicationRole, String>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

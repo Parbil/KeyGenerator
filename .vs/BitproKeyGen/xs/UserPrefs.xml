@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{6460DED2-C75B-4D25-959C-9CA8BBA26FCC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KeyGen Status">
     <Files>
-      <File FileName="appsettings.json" Line="1" Column="1" />
-      <File FileName="Startup.cs" Line="1" Column="1" />
+      <File FileName="Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" Line="11" Column="1" />
+      <File FileName="KeyGen Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.BitproKeyGen PreferredExecutionTarget="MonoDevelop.Default" />
