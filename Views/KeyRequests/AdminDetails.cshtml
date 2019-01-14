@@ -1,0 +1,87 @@
+﻿
+@model BitproKeyGen.Models.KeyRequest
+
+@{
+    ViewData["Title"] = "AdminDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Details</h3>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Shop Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShopName)
+        </dd>
+        <dt>
+            Contact No
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShopContactNo)
+        </dd>
+        <dt>
+            Product Key
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductKey)
+        </dd>
+        <dt>
+            License Key
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LicenseKey)
+        </dd>
+        <dt>
+            Duration
+        </dt>
+        <dd>
+            @*@Html.DisplayFor(model => model.Duration)*@
+            @if (Model.Duration == 730)
+            {
+                @("2 Year");
+            }
+            else if (Model.Duration == 365)
+            {
+                @("1 Year");
+            }
+            else if (Model.Duration == 183)
+            {
+                @("6 Month");
+            }
+            else
+            {
+                @("Trial");
+            }
+        </dd>
+        <dt>
+            Requested Date
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RequestedDate)
+        </dd>
+        <dt>
+            Approved Date
+        </dt>
+        <dd>
+            @if (Model.ApprovedDate < new DateTime(2018, 1, 1))
+            {
+                @("");
+            }
+            else
+            {
+            @Html.DisplayFor(model => model.ApprovedDate)
+            }
+        </dd>
+        <dt>
+            Status
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>

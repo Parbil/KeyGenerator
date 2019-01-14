@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BitproKeyGen.Models.KeyRequest>
+
+@{
+    ViewData["Title"] = "Pending";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Pending</h3>
+
+<table  class="table table-striped " id="myTable" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ShopName)*@
+                SHOP NAME
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ShopContactNo)*@
+                CONTACT NO
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Duration)*@
+                DURATION
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.RequestedDate)*@
+                REQUESTED DATE
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ApprovedDate)*@
+                APPROVED DATE
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Status)*@
+                STATUS
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShopName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShopContactNo)
+                </td>
+                <td>
+                    @if (item.Duration == 730)
+                    {
+                        @("2 Year");
+                    }
+                    else if (item.Duration == 365)
+                    {
+                        @("1 Year");
+                    }
+                    else if (item.Duration == 183)
+                    {
+                        @("6 Month");
+                    }
+                    else
+                    {
+                        @("Trial");
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-action="AdminDetails" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-success" asp-action="AdminApprove" asp-route-id="@item.Id">Approve</a>
+                    <a class="btn btn-danger" asp-action="AdminReject" asp-route-id="@item.Id">Reject</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>

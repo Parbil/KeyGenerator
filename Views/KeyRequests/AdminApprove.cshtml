@@ -1,0 +1,76 @@
+﻿@model BitproKeyGen.Models.KeyRequest
+
+@{
+    ViewData["Title"] = "AdminApprove";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Approve</h2>
+
+<hr />
+<body>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="AdminApprove">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="ProductKey" class="control-label">Product Key</label>
+                    <input asp-for="ProductKey" id="ProductKey" class="form-control" readonly />
+                    <span asp-validation-for="ProductKey" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duration" class="control-label">Duration</label>
+                    @*<input asp-for="Duration" id="Duration" class="form-control" />*@
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "2 YEAR",
+                            Value = "730"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "1 YEAR",
+                            Value = "365",
+
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "6 MONTH",
+                            Value = "183"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "TRAIL",
+                            Value = "30"
+                        });
+                    }
+
+                    @Html.DropDownList("Duration", listItems, new { @class = "form-control" })
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LicenseKey" class="control-label">License Key</label>
+                    <input asp-for="LicenseKey" class="form-control" readonly />
+                    <span asp-validation-for="LicenseKey" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit"  class="btn btn-primary ">Generate</button>
+                </div>
+
+                @*<div class="form-group">
+                    <input type="button" value="Approve" class="btn btn-default " />
+                    <a class="btn btn-default" >Approve</a>
+                </div>*@
+                </form>
+        </div>
+    </div>
+
+
+</body>
+
+
+
